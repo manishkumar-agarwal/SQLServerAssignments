@@ -1,9 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DBWrapper
 {
@@ -13,53 +10,47 @@ namespace DBWrapper
     public class DBInterface
     {
 
-        public static void GetProductDetailsByCategoryID(int productCategoryID)
-        {
-            DBInteraction.SetUpDBConnection();
-            string spCallString = "EXEC dbo.uspGetProductCategoryDetailsByID @ProductCategoryID;";
-            SqlCommand sqlCommand = new SqlCommand(spCallString, DBConnection.SqlDBConnection);
-            sqlCommand.Parameters.AddWithValue("@ProductCategoryID", productCategoryID);
-            SqlDataReader queryResult =  DBInteraction.ExecuteCommand(sqlCommand);
-            Display(queryResult);
-            DBInteraction.databaseConnection.CloseDBConnection();
+        static string StoredProcedureName; 
+        static List<SqlParameter> StoredProcedureParameterList = new List<SqlParameter>();
 
+        public static SqlDataReader GetProductDetailsByCategoryID(int productCategoryID)
+        {
+            
+            StoredProcedureParameterList.Clear();
+            StoredProcedureName = "dbo.uspGetProductCategoryDetailsByID";
+            StoredProcedureParameterList.Add(new SqlParameter("@ProductCategoryID", productCategoryID));
+            return  DBInteraction.ExecuteSelect(StoredProcedureName, StoredProcedureParameterList);
         }
 
         public static void GetAllActiveProductCategories()
         {
-            DBInteraction.SetUpDBConnection();
             string spCallString = "EXEC dbo.uspGetAllActiveProductCategories;";
             SqlCommand sqlCommand = new SqlCommand(spCallString, DBConnection.SqlDBConnection);
             SqlDataReader queryResult = DBInteraction.ExecuteCommand(sqlCommand);
             Display(queryResult);
-            DBInteraction.databaseConnection.CloseDBConnection();
         }
 
         public static void InsertProductCategory(string productCategoryName)
         {
-            DBInteraction.SetUpDBConnection();
             string spCallString = "EXEC [dbo].[uspInsertProductCategory] @ProductCategoryName;";
             SqlCommand sqlCommand = new SqlCommand(spCallString, DBConnection.SqlDBConnection);
             sqlCommand.Parameters.AddWithValue("@ProductCategoryName", productCategoryName);
             SqlDataReader queryResult = DBInteraction.ExecuteCommand(sqlCommand);
             DisplayOperationStatus(queryResult);
-            DBInteraction.databaseConnection.CloseDBConnection();
         }
 
         public static void InactivateProductCategory(int productCategoryID)
         {
-            DBInteraction.SetUpDBConnection();
+
             string spCallString = "EXEC [dbo].[uspUpdateProductCategoryAsInactive] @ProductCategoryID;";
             SqlCommand sqlCommand = new SqlCommand(spCallString, DBConnection.SqlDBConnection);
             sqlCommand.Parameters.AddWithValue("@ProductCategoryID", productCategoryID);
             SqlDataReader queryResult = DBInteraction.ExecuteCommand(sqlCommand);
             DisplayOperationStatus(queryResult);
-            DBInteraction.databaseConnection.CloseDBConnection();
         }
 
         public static void UpdateProductCategoryName(int productCategoryID, string productCategoryName)
         {
-            DBInteraction.SetUpDBConnection();
             string spCallString = "EXEC [dbo].[uspUpdateProductCategoryByID]" + 
                 "@ProductCategoryID, @ProductCategoryName ;";
             SqlCommand sqlCommand = new SqlCommand(spCallString, DBConnection.SqlDBConnection);
@@ -67,7 +58,6 @@ namespace DBWrapper
             sqlCommand.Parameters.AddWithValue("@ProductCategoryName", productCategoryName);
             SqlDataReader queryResult = DBInteraction.ExecuteCommand(sqlCommand);
             DisplayOperationStatus(queryResult);
-            DBInteraction.databaseConnection.CloseDBConnection();
         }
 
         private static void DisplayOperationStatus(SqlDataReader queryResult)

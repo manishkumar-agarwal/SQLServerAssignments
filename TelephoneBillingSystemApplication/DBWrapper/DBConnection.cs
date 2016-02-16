@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Data.SqlClient;
 
 namespace DBWrapper
 {
@@ -12,6 +7,7 @@ namespace DBWrapper
     /// </summary>
     public class DBConnection
     {
+        #region ConnectionMembers
         private string connectionString = "Data Source=(local);Initial Catalog=AdventureWorks;"
             + "Integrated Security=true";
 
@@ -23,6 +19,7 @@ namespace DBWrapper
         {
             get { return isConnectedToDB; }
         }
+        #endregion ConnectionMembers
 
         public DBConnection()
         {
@@ -85,18 +82,12 @@ namespace DBWrapper
             return true;
         }
 
-
-        /// <summary>
-        /// This method opens the connection to the connected SQL Database
-        /// </summary>
         public void OpenDBConnection()
         {
             SqlDBConnection.Open();
         }
 
-        /// <summary>
-        /// This method closes the connection to the connected SQL Database
-        /// </summary>
+
         public void CloseDBConnection()
         {
             SqlDBConnection.Close();

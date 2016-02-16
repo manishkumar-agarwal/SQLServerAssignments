@@ -12,8 +12,37 @@ namespace UserInterfaceFunctions
     {
         internal static SqlDataReader DisplayAllCustomers()
         {
-            SqlDataReader queryResult = DBInterface.GetAllCustomers();
-            return queryResult;
+            return DBInterface.GetAllCustomers();
+        }
+
+        internal static SqlDataReader DisplayCustomerByID()
+        {
+            throw new NotImplementedException();
+        }
+
+        internal static SqlDataReader DisplayCustomerBillHistory()
+        {
+            throw new NotImplementedException();
+        }
+
+        internal static SqlDataReader DisplayAllEmployees()
+        {
+            throw new NotImplementedException();
+        }
+
+        internal static SqlDataReader DisplayEmployeeByID()
+        {
+            throw new NotImplementedException();
+        }
+
+        internal static SqlDataReader DisplayEmployeesCustomers()
+        {
+            throw new NotImplementedException();
+        }
+
+        internal static SqlDataReader DisplayBonusForEmployee()
+        {
+            throw new NotImplementedException();
         }
     }
 }

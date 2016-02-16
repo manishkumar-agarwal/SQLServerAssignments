@@ -40,12 +40,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="UserInterfaceDisplayFunctions.cs" />
     <Compile Include="UserInterfaceSetupFunctions.cs" />
     <Compile Include="UserInterfaceModificationFunctions.cs" />
     <Compile Include="UserInterfaceReportingFunctions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UserInterfaceToDbAccessFunctions.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\DBWrapper\DBWrapper.csproj">
+      <Project>{b86cd122-d028-4d6a-9979-91b613e824b8}</Project>
+      <Name>DBWrapper</Name>
+    </ProjectReference>
     <ProjectReference Include="..\TelephoneBillingSystemChoices\TelephoneBillingSystemChoices.csproj">
       <Project>{9c6757df-ccf1-45b1-974d-1929c60143db}</Project>
       <Name>TelephoneBillingSystemChoices</Name>

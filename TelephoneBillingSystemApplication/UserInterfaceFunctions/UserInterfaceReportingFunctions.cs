@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Data.SqlClient;
 using TelephoneBillingSystemChoices;
 
 namespace UserInterfaceFunctions
@@ -7,7 +8,26 @@ namespace UserInterfaceFunctions
     {
         public static void UserReportingFunction(TelephoneBillSystemChoices userChoice)
         {
-            throw new NotImplementedException();
+            try
+            {
+                SqlDataReader queryResult = null;
+                switch (userChoice)
+                {
+                    case TelephoneBillSystemChoices.DisplayAllCustomers:
+                        queryResult = UserInterfaceToDbAccessFunctions.DisplayAllCustomers();
+                        break;
+                }
+
+                UserInterfaceDisplayFunctions.DisplayQueryResult(queryResult);
+            }
+            catch(SqlException ex)
+            {
+                Console.WriteLine("Exception Occured");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Exception Occured");
+            }
         }
     }
 }

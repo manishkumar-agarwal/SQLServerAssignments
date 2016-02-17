@@ -26,6 +26,17 @@ namespace UserInputFunctions
             return isValidLetterFlag;
         }
 
+        public static bool IsValidMobileNumber(int mobileNumber)
+        {
+            var isValidMobileNumber = true;
+
+            if(mobileNumber < 1000000000 || mobileNumber > 2000000000)
+            {
+                isValidMobileNumber = false;
+            }
+            return isValidMobileNumber;
+        }
+
 
         /// <summary>
         /// This method checks if the Input User Choice is Valid

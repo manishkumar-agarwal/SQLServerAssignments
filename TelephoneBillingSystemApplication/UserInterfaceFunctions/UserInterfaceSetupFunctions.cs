@@ -18,5 +18,18 @@ namespace UserInterfaceFunctions
             return employeeId;
 
         }
+
+        internal static int GetMobileNumber()
+        {
+            int mobileNumber = UserInputGathering.GetIntergerInput("Please enter the Customer Mobile Number");
+
+            if (UserInputValidation.IsValidMobileNumber(mobileNumber) == false)
+            {
+                throw new InvalidOperationException("Mobile Number not valid ");
+            }
+
+            return mobileNumber;
+
+        }
     }
 }

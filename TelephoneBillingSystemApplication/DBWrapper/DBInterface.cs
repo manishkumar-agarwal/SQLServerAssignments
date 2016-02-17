@@ -20,6 +20,22 @@ namespace DBWrapper
             return DBInteraction.ExecuteSelect(StoredProcedureName, StoredProcedureParameterList);
         }
 
+        public static SqlDataReader GetCustomerByID(int customerMobileNumber)
+        {
+            StoredProcedureParameterList.Clear();
+            StoredProcedureName = "[TelephoneSystem].[uspGetCustomerById]";
+            StoredProcedureParameterList.Add(new SqlParameter("@@customerMobileNumer", customerMobileNumber));
+            return DBInteraction.ExecuteSelect(StoredProcedureName, StoredProcedureParameterList);
+        }
+
+        public static SqlDataReader GetCustomerBillHistory(int customerMobileNumber)
+        {
+            StoredProcedureParameterList.Clear();
+            StoredProcedureName = "[TelephoneSystem].[uspGetCustomerBillHistory]";
+            StoredProcedureParameterList.Add(new SqlParameter("@@customerMobileNumer", customerMobileNumber));
+            return DBInteraction.ExecuteSelect(StoredProcedureName, StoredProcedureParameterList);
+
+        }
 
         public static SqlDataReader GetEmployeeById(int employeeId)
         {

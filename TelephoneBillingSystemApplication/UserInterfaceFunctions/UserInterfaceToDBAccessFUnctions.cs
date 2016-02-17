@@ -17,12 +17,14 @@ namespace UserInterfaceFunctions
 
         internal static SqlDataReader DisplayCustomerByID()
         {
-            throw new NotImplementedException();
+            var customerMobileNumber = UserInterfaceSetupFunctions.GetMobileNumber();
+            return DBInterface.GetCustomerByID(customerMobileNumber);
         }
 
         internal static SqlDataReader DisplayCustomerBillHistory()
         {
-            throw new NotImplementedException();
+            var customerMobileNumber = UserInterfaceSetupFunctions.GetMobileNumber();
+            return DBInterface.GetCustomerBillHistory(customerMobileNumber);
         }
 
         internal static SqlDataReader DisplayAllEmployees()

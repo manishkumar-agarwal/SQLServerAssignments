@@ -31,11 +31,11 @@ namespace UserInterfaceFunctions
             }
             catch (SqlException ex)
             {
-                Console.WriteLine("Exception Occured");
+                Console.WriteLine("Exception Occured" + ex.Message);
             }
             catch (Exception ex)
             {
-                Console.WriteLine("Exception Occured");
+                Console.WriteLine("Exception Occured" + ex.Message);
             }
         }
 

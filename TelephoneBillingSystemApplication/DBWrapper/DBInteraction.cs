@@ -12,7 +12,7 @@ namespace DBWrapper
         private static SqlCommand GenerateSQLCommand(string storedProcedureName, 
                                                 List<SqlParameter> storedProcedureParameterList)
         {
-            StringBuilder queryString = new StringBuilder("EXEC");
+            StringBuilder queryString = new StringBuilder("EXEC " + storedProcedureName);
 
             foreach (var sqlParameter in storedProcedureParameterList)
             {

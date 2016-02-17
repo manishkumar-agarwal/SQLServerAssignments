@@ -27,7 +27,7 @@ namespace UserInterfaceFunctions
 
         internal static SqlDataReader DisplayAllEmployees()
         {
-            throw new NotImplementedException();
+            return DBInterface.GetAllEmployees();
         }
 
         internal static SqlDataReader DisplayEmployeeByID()

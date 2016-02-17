@@ -15,7 +15,9 @@ namespace DBWrapper
 
         public static SqlDataReader GetAllCustomers()
         {
-            throw new NotImplementedException();
+            StoredProcedureParameterList.Clear();
+            StoredProcedureName = "[TelephoneSystem].[uspGetAllCustomers]";
+            return DBInteraction.ExecuteSelect(StoredProcedureName, StoredProcedureParameterList);
         }
 
         public static SqlDataReader GetProductDetailsByCategoryID(int productCategoryID)
@@ -26,7 +28,12 @@ namespace DBWrapper
             return  DBInteraction.ExecuteSelect(StoredProcedureName, StoredProcedureParameterList);
         }
 
-       
+        public static SqlDataReader GetAllEmployees()
+        {
+            StoredProcedureParameterList.Clear();
+            StoredProcedureName = "[TelephoneSystem].[uspGetAllEmployees]";
+            return DBInteraction.ExecuteSelect(StoredProcedureName, StoredProcedureParameterList);
+        }
 
         public static void InsertProductCategory(string productCategoryName)
         {
@@ -34,39 +41,7 @@ namespace DBWrapper
             StoredProcedureName = "[dbo].[uspInsertProductCategory]";
             StoredProcedureParameterList.Add(new SqlParameter("@ProductCategoryName", productCategoryName));
             int queryResult = DBInteraction.ExecuteNonSelect(StoredProcedureName, StoredProcedureParameterList);
-            DisplayOperationStatus(queryResult);
-        }
-
-    
-
-        private static void DisplayOperationStatus(object queryResult)
-        {
-            Console.WriteLine("Operation Successful");
-        }
-
-
-        /// <summary>
-        /// This method displays the results send by a query on the console
-        /// </summary>
-        /// <param name="queryResult">This parameter is the results send by the query</param>
-        internal static void Display(SqlDataReader queryResult)
-        {
-            if (!queryResult.HasRows)
-            {
-                Console.WriteLine("No details found for criteria. Please retry with a different Criteria");
-                return;
-            }
-
-            while (queryResult.Read())
-            {
-                for (int i = 0; i < queryResult.FieldCount; i++)
-                {
-                    Console.Write("\t{0}\t", queryResult[i]);
-                }
-                Console.WriteLine();
-
-            }
-            queryResult.Close();
+            //DisplayOperationStatus(queryResult);
         }
     }
 }

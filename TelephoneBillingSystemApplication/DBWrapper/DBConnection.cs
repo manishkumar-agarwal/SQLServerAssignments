@@ -8,7 +8,7 @@ namespace DBWrapper
     public class DBConnection
     {
         #region ConnectionMembers
-        private string connectionString = "Data Source=(local);Initial Catalog=AdventureWorks;"
+        private string connectionString = "Data Source=(local);Initial Catalog=AssignmentDatabase;"
             + "Integrated Security=true";
 
         public static SqlConnection SqlDBConnection;

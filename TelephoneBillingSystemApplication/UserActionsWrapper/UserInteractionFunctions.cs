@@ -33,7 +33,7 @@ namespace UserActionsWrapper
                 "\n1) Display All Telephone Customers" +
                 "\n2) Display Customer By ID" +
                 "\n3) Display Customer Billing History" +
-                "\n4) Display Telephone Company Employees" +
+                "\n4) Display All Telephone Company Employees" +
                 "\n5) Display Employee By ID" +
                 "\n6) Display Customers Of an Employee" +
                 "\n7) Display Summary for Employees " +

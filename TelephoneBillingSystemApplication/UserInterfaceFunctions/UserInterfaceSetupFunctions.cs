@@ -8,7 +8,7 @@ namespace UserInterfaceFunctions
 
         internal static int GetEmployeeId()
         {
-            int employeeId = UserInputGathering.GetIntergerInput("Please enter the Employee ID");
+            var employeeId = UserInputGathering.GetIntergerInput("Please enter the Employee ID");
 
             if (UserInputValidation.IsValidIntegerValue(employeeId) == false)
             {
@@ -21,7 +21,7 @@ namespace UserInterfaceFunctions
 
         internal static int GetMobileNumber()
         {
-            int mobileNumber = UserInputGathering.GetIntergerInput("Please enter the Customer Mobile Number");
+            var mobileNumber = UserInputGathering.GetIntergerInput("Please enter the Customer Mobile Number");
 
             if (UserInputValidation.IsValidMobileNumber(mobileNumber) == false)
             {
@@ -30,6 +30,42 @@ namespace UserInterfaceFunctions
 
             return mobileNumber;
 
+        }
+
+        internal static string GetCustomerName()
+        {
+            var customerName = UserInputGathering.GetStringInput("Enter Customer Name");
+            if (!UserInputValidation.IsValidString(customerName))
+            {
+                throw new InvalidOperationException(" ");
+
+            }
+
+            return customerName;
+        }
+
+        internal static string GetCustomerIdentity()
+        {
+            var customerIdentity = UserInputGathering.GetStringInput("Enter Customer Identity Type");
+            if (!UserInputValidation.IsValidCustomerIdentity(customerIdentity))
+            {
+                throw new InvalidOperationException(" ");
+
+            }
+
+            return customerIdentity;
+        }
+
+        internal static string GetCustomerEmail()
+        {
+            var customerEmailAddress = UserInputGathering.GetStringInput("Enter Customer Email");
+            if (!UserInputValidation.IsValidEmailAddress(customerEmailAddress))
+            {
+                throw new InvalidOperationException(" ");
+
+            }
+
+            return customerEmailAddress;
         }
     }
 }

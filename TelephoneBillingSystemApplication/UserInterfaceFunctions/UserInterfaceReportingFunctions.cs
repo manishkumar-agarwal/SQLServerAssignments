@@ -33,18 +33,6 @@ namespace UserInterfaceFunctions
             {
                 Console.WriteLine("Exception Occured" + ex.Message);
             }
-            catch (FormatException ex)
-            {
-                Console.WriteLine("Bad Input !!!" + ex.Message);
-            }
-            catch (InvalidOperationException ex)
-            {
-                Console.WriteLine(ex.Message);
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine("Exception Occured" + ex.Message);
-            }
         }
 
         private static SqlDataReader CustomerRelatedReporting(TelephoneBillSystemChoices userChoice)
@@ -81,7 +69,7 @@ namespace UserInterfaceFunctions
                     queryResult = UserInterfaceToDbAccessFunctions.DisplayEmployeesCustomers();
                     break;
                 case TelephoneBillSystemChoices.DisplayTransactionSummaryforEmployees:
-                    queryResult = UserInterfaceToDbAccessFunctions.DisplayBonusForEmployee();
+                    queryResult = UserInterfaceToDbAccessFunctions.DisplayTransactionSummaryForEmployees();
                     break;
                 case TelephoneBillSystemChoices.CalculateEmployeeBonus:
                     queryResult = UserInterfaceToDbAccessFunctions.DisplayBonusForEmployee();

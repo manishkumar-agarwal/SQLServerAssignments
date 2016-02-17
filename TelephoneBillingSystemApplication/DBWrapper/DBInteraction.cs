@@ -12,12 +12,17 @@ namespace DBWrapper
         private static SqlCommand GenerateSQLCommand(string storedProcedureName, 
                                                 List<SqlParameter> storedProcedureParameterList)
         {
+            int noOfParameters = storedProcedureParameterList.Count;
             StringBuilder queryString = new StringBuilder("EXEC " + storedProcedureName);
 
             foreach (var sqlParameter in storedProcedureParameterList)
             {
                 queryString.Append(" ");
                 queryString.Append(sqlParameter.ParameterName);
+                if(--noOfParameters > 0)
+                {
+                    queryString.Append(",");
+                }
             }
 
             SqlCommand sqlCommand = new SqlCommand(queryString.ToString(), DBConnection.SqlDBConnection);

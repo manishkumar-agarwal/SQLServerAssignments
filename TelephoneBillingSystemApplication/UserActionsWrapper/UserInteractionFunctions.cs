@@ -36,8 +36,8 @@ namespace UserActionsWrapper
                 "\n4) Display All Telephone Company Employees" +
                 "\n5) Display Employee By ID" +
                 "\n6) Display Customers Of an Employee" +
-                "\n7) Display Summary for Employees " +
-                "\n8) Display Employee Bonus Details " +
+                "\n7) Display Employee Bonus Details " +
+                "\n8) Display Summary for Employees " +
                 "\n9) Add a New Customer" +
                 "\n10) Update Customer Name" +
                 "\n11) Generate New Customer Bill" +

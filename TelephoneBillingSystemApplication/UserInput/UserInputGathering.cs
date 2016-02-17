@@ -44,6 +44,12 @@ namespace UserInputFunctions
             return Console.ReadLine();
         }
 
+        public static string GetStringInput(string displayString)
+        {
+            Console.WriteLine(displayString);
+            return Console.ReadLine();
+        }
+
         /// <summary>
         /// This method gets the users choice of activity to be performed
         /// </summary>

@@ -37,6 +37,32 @@ namespace UserInputFunctions
             return isValidMobileNumber;
         }
 
+        public static bool IsValidEmailAddress(string customerEmailAddress)
+        {
+            var isValidEmailAddress = true;
+
+            if (!customerEmailAddress.Contains("@"))
+            {
+                isValidEmailAddress = false;
+            }
+            return isValidEmailAddress;
+        }
+
+        public static bool IsValidCustomerIdentity(string customerIdentity)
+        {
+            var isValidIdentity = true;
+            
+
+            if (!(customerIdentity.Equals("Aadhar") ||
+                  customerIdentity.Equals("PAN Card") ||
+                  customerIdentity.Equals("Passport")))
+            {
+                Console.WriteLine("Bad Customer Identity");
+                isValidIdentity = false;
+            }
+            return isValidIdentity;
+        }
+
 
         /// <summary>
         /// This method checks if the Input User Choice is Valid

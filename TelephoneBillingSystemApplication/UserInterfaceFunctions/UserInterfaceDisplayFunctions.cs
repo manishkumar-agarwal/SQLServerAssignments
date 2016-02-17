@@ -14,6 +14,7 @@ namespace UserInterfaceFunctions
             if (!queryResult.HasRows)
             {
                 Console.WriteLine("No data found. Please retry with a different Criteria");
+                queryResult.Close();
                 return;
             }
 

@@ -1,12 +1,22 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using UserInputFunctions;
 
 namespace UserInterfaceFunctions
 {
     class UserInterfaceSetupFunctions
     {
+
+        internal static int GetEmployeeId()
+        {
+            int employeeId = UserInputGathering.GetIntergerInput("Please enter the Employee ID");
+
+            if (UserInputValidation.IsValidIntegerValue(employeeId) == false)
+            {
+                throw new InvalidOperationException(" ");
+            }
+
+            return employeeId;
+
+        }
     }
 }

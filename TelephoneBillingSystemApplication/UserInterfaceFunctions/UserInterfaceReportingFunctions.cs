@@ -33,6 +33,14 @@ namespace UserInterfaceFunctions
             {
                 Console.WriteLine("Exception Occured" + ex.Message);
             }
+            catch (FormatException ex)
+            {
+                Console.WriteLine("Bad Input !!!" + ex.Message);
+            }
+            catch (InvalidOperationException ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
             catch (Exception ex)
             {
                 Console.WriteLine("Exception Occured" + ex.Message);

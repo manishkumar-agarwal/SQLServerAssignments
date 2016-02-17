@@ -20,12 +20,13 @@ namespace DBWrapper
             return DBInteraction.ExecuteSelect(StoredProcedureName, StoredProcedureParameterList);
         }
 
-        public static SqlDataReader GetProductDetailsByCategoryID(int productCategoryID)
-        {  
+
+        public static SqlDataReader GetEmployeeById(int employeeId)
+        {
             StoredProcedureParameterList.Clear();
-            StoredProcedureName = "dbo.uspGetProductCategoryDetailsByID";
-            StoredProcedureParameterList.Add(new SqlParameter("@ProductCategoryID", productCategoryID));
-            return  DBInteraction.ExecuteSelect(StoredProcedureName, StoredProcedureParameterList);
+            StoredProcedureName = "[TelephoneSystem].[uspGetEmployeeByID]";
+            StoredProcedureParameterList.Add(new SqlParameter("@EmployeeID", employeeId));
+            return DBInteraction.ExecuteSelect(StoredProcedureName, StoredProcedureParameterList);
         }
 
         public static SqlDataReader GetAllEmployees()

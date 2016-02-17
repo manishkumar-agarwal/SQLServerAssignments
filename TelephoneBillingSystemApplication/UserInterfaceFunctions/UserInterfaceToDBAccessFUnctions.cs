@@ -32,7 +32,8 @@ namespace UserInterfaceFunctions
 
         internal static SqlDataReader DisplayEmployeeByID()
         {
-            throw new NotImplementedException();
+            var employeeId = UserInterfaceSetupFunctions.GetEmployeeId();
+            return DBInterface.GetEmployeeById(employeeId);
         }
 
         internal static SqlDataReader DisplayEmployeesCustomers()

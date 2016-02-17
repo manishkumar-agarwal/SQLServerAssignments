@@ -56,6 +56,10 @@
       <Project>{9c6757df-ccf1-45b1-974d-1929c60143db}</Project>
       <Name>TelephoneBillingSystemChoices</Name>
     </ProjectReference>
+    <ProjectReference Include="..\UserInput\UserInputFunctions.csproj">
+      <Project>{262b988f-bd9d-4c4e-bdd5-259338d07f68}</Project>
+      <Name>UserInputFunctions</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

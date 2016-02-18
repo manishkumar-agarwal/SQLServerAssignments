@@ -36,6 +36,18 @@ namespace UserInterfaceFunctions
             }
         }
 
+        internal static void RecordBillPayment()
+        {
+            var customerMobileNumber = UserInterfaceSetupFunctions.GetMobileNumber();
+            var billPaymentMode = UserInterfaceSetupFunctions.GetBillPaymemtMode();
+            var billAmount = UserInterfaceSetupFunctions.GetBillAmount();
+            int insertCount = DBInterface.RecordBillPaymentForCustomer(customerMobileNumber, billPaymentMode, billAmount);
+            if (insertCount > 0)
+            {
+                Console.WriteLine("Inserted Customer Bill Successfully");
+            }
+        }
+
         internal static void UpdateCustomer()
         {
             var customerMobileNumber = UserInterfaceSetupFunctions.GetMobileNumber();

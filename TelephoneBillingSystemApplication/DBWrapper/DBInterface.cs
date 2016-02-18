@@ -40,6 +40,16 @@ namespace DBWrapper
             return DBInteraction.ExecuteNonSelect(StoredProcedureName, StoredProcedureParameterList);
         }
 
+        public static int RecordBillPaymentForCustomer(int customerMobileNumber, string billPaymentMode, decimal billAmount)
+        {
+            StoredProcedureParameterList.Clear();
+            StoredProcedureName = "[TelephoneSystem].[uspAddCustomerBillPayment]";
+            StoredProcedureParameterList.Add(new SqlParameter("@CustomerMobileNumber", customerMobileNumber));
+            StoredProcedureParameterList.Add(new SqlParameter("@BillPaymentMode", billPaymentMode));
+            StoredProcedureParameterList.Add(new SqlParameter("@BillAmount", billAmount));
+            return DBInteraction.ExecuteNonSelect(StoredProcedureName, StoredProcedureParameterList);
+        }
+
         public static SqlDataReader GetCustomerBillHistory(int customerMobileNumber)
         {
             StoredProcedureParameterList.Clear();

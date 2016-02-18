@@ -20,6 +20,7 @@ namespace UserInterfaceFunctions
                         break;
                     case TelephoneBillSystemChoices.GenerateCustomerBill:
                     case TelephoneBillSystemChoices.RecordPayment:
+                        UserInterfaceToDbAccessFunctions.RecordBillPayment();
                         break;
                 }
 

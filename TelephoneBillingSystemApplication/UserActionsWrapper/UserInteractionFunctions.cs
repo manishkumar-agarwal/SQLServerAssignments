@@ -2,6 +2,7 @@
 using TelephoneBillingSystemChoices;
 using UserInputFunctions;
 using UserInterfaceFunctions;
+using System.Configuration;
 
 namespace UserActionsWrapper
 {
@@ -28,21 +29,7 @@ namespace UserActionsWrapper
         /// <returns>Returns the Users Choice of Action </returns>
         private static TelephoneBillSystemChoices PromptUsersChoice()
         {
-            Console.Write("\nWelcome to the Telephone Billing System Console" +
-                "\nPlease enter the action to perform " +
-                "\n1) Display All Telephone Customers" +
-                "\n2) Display Customer By ID" +
-                "\n3) Display Customer Billing History" +
-                "\n4) Display All Telephone Company Employees" +
-                "\n5) Display Employee By ID" +
-                "\n6) Display Customers Of an Employee" +
-                "\n7) Display Employee Bonus Details " +
-                "\n8) Display Summary for Employees " +
-                "\n9) Add a New Customer" +
-                "\n10) Update Customer Name" +
-                "\n11) Generate New Customer Bill" +
-                "\n12) Record Customer Bill Payment" +
-                "\n13) End Application\n\nPlease enter your choice : ");
+            Console.Write(ConfigurationManager.AppSettings.Get("UserDisplayOptions"));
 
             TelephoneBillSystemChoices userChoice = UserInputGathering.GetUsersChoice();
             return userChoice;

@@ -1,4 +1,5 @@
 ﻿using System.Data.SqlClient;
+using System.Configuration;
 
 namespace DBWrapper
 {
@@ -8,8 +9,7 @@ namespace DBWrapper
     public class DBConnection
     {
         #region ConnectionMembers
-        private string connectionString = "Data Source=(local);Initial Catalog=AssignmentDatabase;"
-            + "Integrated Security=true";
+        private string connectionString = ConfigurationManager.AppSettings.Get("DBConnectionString");
 
         public static SqlConnection SqlDBConnection;
 

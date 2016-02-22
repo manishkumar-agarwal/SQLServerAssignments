@@ -1,6 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Data.SqlClient;
+using System.Configuration;
 
 namespace DBWrapper
 {
@@ -16,14 +16,14 @@ namespace DBWrapper
         public static SqlDataReader GetAllCustomers()
         {
             StoredProcedureParameterList.Clear();
-            StoredProcedureName = "[TelephoneSystem].[uspGetAllCustomers]";
+            StoredProcedureName = ConfigurationManager.AppSettings.Get("GetAllCustomersSP");
             return DBInteraction.ExecuteSelect(StoredProcedureName, StoredProcedureParameterList);
         }
 
         public static SqlDataReader GetCustomerByID(int customerMobileNumber)
         {
             StoredProcedureParameterList.Clear();
-            StoredProcedureName = "[TelephoneSystem].[uspGetCustomerById]";
+            StoredProcedureName = ConfigurationManager.AppSettings.Get("GetCustomerByIdSP");
             StoredProcedureParameterList.Add(new SqlParameter("@customerMobileNumer", customerMobileNumber));
             return DBInteraction.ExecuteSelect(StoredProcedureName, StoredProcedureParameterList);
         }
@@ -31,7 +31,7 @@ namespace DBWrapper
         public static int AddCutomer(int customerMobileNumber, string customerName, string customerEmail, int employeeId, string customerIdentity)
         {
             StoredProcedureParameterList.Clear();
-            StoredProcedureName = "[TelephoneSystem].[uspAddCustomer]";
+            StoredProcedureName = ConfigurationManager.AppSettings.Get("AddCustomerSP");
             StoredProcedureParameterList.Add(new SqlParameter("@CustomerMobileNumber", customerMobileNumber));
             StoredProcedureParameterList.Add(new SqlParameter("@CustomerName", customerName));
             StoredProcedureParameterList.Add(new SqlParameter("@CustomerEmailAddress", customerEmail));
@@ -43,7 +43,7 @@ namespace DBWrapper
         public static int RecordBillPaymentForCustomer(int customerMobileNumber, string billPaymentMode, decimal billAmount)
         {
             StoredProcedureParameterList.Clear();
-            StoredProcedureName = "[TelephoneSystem].[uspAddCustomerBillPayment]";
+            StoredProcedureName = ConfigurationManager.AppSettings.Get("RecordBillPaymentForCustomerSP");
             StoredProcedureParameterList.Add(new SqlParameter("@CustomerMobileNumber", customerMobileNumber));
             StoredProcedureParameterList.Add(new SqlParameter("@BillPaymentMode", billPaymentMode));
             StoredProcedureParameterList.Add(new SqlParameter("@BillAmount", billAmount));
@@ -53,7 +53,7 @@ namespace DBWrapper
         public static SqlDataReader GetCustomerBillHistory(int customerMobileNumber)
         {
             StoredProcedureParameterList.Clear();
-            StoredProcedureName = "[TelephoneSystem].[uspGetCustomerBillHistory]";
+            StoredProcedureName = ConfigurationManager.AppSettings.Get("GetCustomerBillHistorySP");
             StoredProcedureParameterList.Add(new SqlParameter("@customerMobileNumer", customerMobileNumber));
             return DBInteraction.ExecuteSelect(StoredProcedureName, StoredProcedureParameterList);
 
@@ -62,7 +62,7 @@ namespace DBWrapper
         public static int UpdateCustomer(int customerMobileNumber, string customerEmail)
         {
             StoredProcedureParameterList.Clear();
-            StoredProcedureName = "[TelephoneSystem].[uspUpdateCustomer]";
+            StoredProcedureName = ConfigurationManager.AppSettings.Get("UpdateCustomerSP");
             StoredProcedureParameterList.Add(new SqlParameter("@CustomerMobileNumber", customerMobileNumber));
             StoredProcedureParameterList.Add(new SqlParameter("@CustomerEmailAddress", customerEmail));
             return DBInteraction.ExecuteNonSelect(StoredProcedureName, StoredProcedureParameterList);
@@ -71,7 +71,7 @@ namespace DBWrapper
         public static SqlDataReader GetCutomersForEmployee(int employeeId)
         {
             StoredProcedureParameterList.Clear();
-            StoredProcedureName = "[TelephoneSystem].[uspGetAllCustomersForEmployee]";
+            StoredProcedureName = ConfigurationManager.AppSettings.Get("GetCustomersForEmployeeSP");
             StoredProcedureParameterList.Add(new SqlParameter("@EmployeeID", employeeId));
             return DBInteraction.ExecuteSelect(StoredProcedureName, StoredProcedureParameterList);
         }
@@ -79,14 +79,14 @@ namespace DBWrapper
         public static SqlDataReader GetSummaryForEmployees()
         {
             StoredProcedureParameterList.Clear();
-            StoredProcedureName = "[TelephoneSystem].[uspSummaryForEmployees]";
+            StoredProcedureName = ConfigurationManager.AppSettings.Get("GetSummaryForEmployeesSP");
             return DBInteraction.ExecuteSelect(StoredProcedureName, StoredProcedureParameterList);
         }
 
         public static SqlDataReader GetBonusForEmployee(int employeeId)
         {
             StoredProcedureParameterList.Clear();
-            StoredProcedureName = "[TelephoneSystem].[uspGetBonusForEmployee]";
+            StoredProcedureName = ConfigurationManager.AppSettings.Get("GetBonusForEmployeeSP");
             StoredProcedureParameterList.Add(new SqlParameter("@EmployeeID", employeeId));
             return DBInteraction.ExecuteSelect(StoredProcedureName, StoredProcedureParameterList);
         }
@@ -94,7 +94,7 @@ namespace DBWrapper
         public static SqlDataReader GetEmployeeById(int employeeId)
         {
             StoredProcedureParameterList.Clear();
-            StoredProcedureName = "[TelephoneSystem].[uspGetEmployeeByID]";
+            StoredProcedureName = ConfigurationManager.AppSettings.Get("GetEmployeeByIDSP");
             StoredProcedureParameterList.Add(new SqlParameter("@EmployeeID", employeeId));
             return DBInteraction.ExecuteSelect(StoredProcedureName, StoredProcedureParameterList);
         }
@@ -102,7 +102,7 @@ namespace DBWrapper
         public static SqlDataReader GetAllEmployees()
         {
             StoredProcedureParameterList.Clear();
-            StoredProcedureName = "[TelephoneSystem].[uspGetAllEmployees]";
+            StoredProcedureName = ConfigurationManager.AppSettings.Get("GetAllEmployeesSP");
             return DBInteraction.ExecuteSelect(StoredProcedureName, StoredProcedureParameterList);
         }
 

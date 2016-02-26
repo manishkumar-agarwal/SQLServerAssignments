@@ -9,7 +9,7 @@ namespace DBWrapper
         private static DBConnection databaseConnection = new DBConnection();
 
         
-        private static SqlCommand GenerateSQLCommand(string storedProcedureName, 
+        internal static SqlCommand GenerateSQLCommand(string storedProcedureName, 
                                                 List<SqlParameter> storedProcedureParameterList)
         {
             int noOfParameters = storedProcedureParameterList.Count;
@@ -35,7 +35,7 @@ namespace DBWrapper
         internal static SqlDataReader ExecuteSelect(string storedProcedureName, 
                                                     List<SqlParameter> storedProcedureParameterList)
         {
-            CheckDBConnection();
+            SetUpDBConnection();
             var sqlCommand = GenerateSQLCommand(storedProcedureName, storedProcedureParameterList);
             var queryResult = sqlCommand.ExecuteReader();
             return queryResult;
@@ -44,7 +44,7 @@ namespace DBWrapper
         internal static int ExecuteNonSelect(string storedProcedureName,
                                                     List<SqlParameter> storedProcedureParameterList)
         {
-            CheckDBConnection();
+            SetUpDBConnection();
             var sqlCommand = GenerateSQLCommand(storedProcedureName, storedProcedureParameterList);
             return sqlCommand.ExecuteNonQuery();
         }
@@ -53,22 +53,25 @@ namespace DBWrapper
         /// <summary>
         /// this method establishes a DB connection
         /// </summary>
-        private static void SetUpDBConnection()
+        internal static bool SetUpDBConnection()
         {
-            databaseConnection.ConnectToDB();
-            databaseConnection.OpenDBConnection();
+            var isNewConnectionSetup = false;
+            if (!CheckDBConnection())
+            {
+                isNewConnectionSetup = databaseConnection.ConnectToDB();
+                databaseConnection.OpenDBConnection();
+            }
+            return isNewConnectionSetup;
         }
 
         /// <summary>
         /// This method checks if the connection is established with the DB.
         /// If DB Connection is not established this method establishes a connection
         /// </summary>
-        private static void CheckDBConnection()
+        internal static bool CheckDBConnection()
         {
-            if (!databaseConnection.IsConnectedToDB)
-            {
-                SetUpDBConnection();
-            }
+            return databaseConnection.IsConnectedToDB;
+            
         }
     }
 }

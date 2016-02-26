@@ -9,7 +9,9 @@ namespace DBWrapper
     public class DBConnection
     {
         #region ConnectionMembers
-        private string connectionString = ConfigurationManager.AppSettings.Get("DBConnectionString");
+        private string connectionString;
+
+        public string ConnectionString { get { return connectionString; }  }
 
         public static SqlConnection SqlDBConnection;
 
@@ -23,7 +25,7 @@ namespace DBWrapper
 
         public DBConnection()
         {
-            
+            this.connectionString = ConfigurationManager.AppSettings.Get("DBConnectionString");
         }
 
         public DBConnection(string connectionString) 
@@ -75,7 +77,7 @@ namespace DBWrapper
         /// This methods disposes the current SQLConnection which has been set up
         /// </summary>
         /// <returns>returns a flag indicatin </returns>
-        private bool DisposeSQLConnection()
+        internal bool DisposeSQLConnection()
         {
             SqlDBConnection.Dispose();
             isConnectedToDB = false;

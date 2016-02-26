@@ -104,6 +104,7 @@ namespace DBWrapperTests
             var spParameterList = new List<SqlParameter>();
             var queryResult = DBInteraction.ExecuteSelect(spName, spParameterList);
             Assert.IsInstanceOfType(queryResult, typeof(SqlDataReader));
+            queryResult.Close();
         }
 
         [TestMethod]
@@ -115,6 +116,7 @@ namespace DBWrapperTests
             spParameterList.Add(new SqlParameter("@customerMobileNumer", "abc"));
             var queryResult = DBInteraction.ExecuteSelect(spName, spParameterList);
             Assert.IsInstanceOfType(queryResult, typeof(SqlDataReader));
+            queryResult.Close();
         }
 
         [TestMethod]
@@ -125,6 +127,7 @@ namespace DBWrapperTests
             spParameterList.Add(new SqlParameter("@customerMobileNumer", 01));
             var queryResult = DBInteraction.ExecuteSelect(spName, spParameterList);
             Assert.IsInstanceOfType(queryResult, typeof(SqlDataReader));
+            queryResult.Close();
         }
 
         [TestMethod]

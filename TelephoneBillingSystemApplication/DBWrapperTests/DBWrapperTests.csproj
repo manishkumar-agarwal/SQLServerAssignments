@@ -58,6 +58,7 @@
   <ItemGroup>
     <Compile Include="DBConnectionTests.cs" />
     <Compile Include="DBInteractionTests.cs" />
+    <Compile Include="DBInterfaceTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
